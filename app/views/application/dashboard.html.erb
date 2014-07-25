@@ -1,0 +1,27 @@
+<div class="row">
+<div class="col-md-4 well " style="height:1000px;">
+    <h4>Users</h4>
+    <hr>
+    <h5>Admin Users</h5>
+    <%= render "users/index", users: User.admin_users %>
+    <h5>Users</h5>
+    <%= render "users/index", users: User.basic_users %>
+
+    <%= link_to 'Sign up new user', new_user_registration_path %>
+  </div>
+  <div class="col-md-4 well " style="height:1000px">
+    <h4>Door</h4>
+    <hr>
+    <%= render "doors/show", door: Door.first %>
+  </div>
+  <div class="col-md-4 well " style="height:1000px">
+   <h4>Temporary Users</h4> 
+   <hr>
+   <%= render "temp_users/index", temp_users: TempUser.all %>
+ </div>
+</div>
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4"></div>
+  <div class="col-md-4"></div>
+</div>

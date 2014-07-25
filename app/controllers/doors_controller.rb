@@ -42,7 +42,7 @@ class DoorsController < ApplicationController
   def update
     respond_to do |format|
       if @door.update(door_params)
-        format.html { redirect_to @door, notice: 'Door was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'Door was successfully updated.' }
         format.json { render :show, status: :ok, location: @door }
       else
         format.html { render :edit }

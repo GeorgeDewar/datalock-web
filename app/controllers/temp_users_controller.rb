@@ -28,9 +28,10 @@ class TempUsersController < ApplicationController
 
     respond_to do |format|
       if @temp_user.save
-        format.html { redirect_to @temp_user, notice: 'Temp user was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Temp user was successfully created.' }
         format.json { render :show, status: :created, location: @temp_user }
       else
+        flash[:alert] =  @user.errors.full_messages.to_sentence
         format.html { render :new }
         format.json { render json: @temp_user.errors, status: :unprocessable_entity }
       end
@@ -42,9 +43,10 @@ class TempUsersController < ApplicationController
   def update
     respond_to do |format|
       if @temp_user.update(temp_user_params)
-        format.html { redirect_to @temp_user, notice: 'Temp user was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'Temp user was successfully updated.' }
         format.json { render :show, status: :ok, location: @temp_user }
       else
+        flash[:alert] =  @user.errors.full_messages.to_sentence
         format.html { render :edit }
         format.json { render json: @temp_user.errors, status: :unprocessable_entity }
       end
@@ -56,7 +58,7 @@ class TempUsersController < ApplicationController
   def destroy
     @temp_user.destroy
     respond_to do |format|
-      format.html { redirect_to temp_users_url, notice: 'Temp user was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'Temp user was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +71,6 @@ class TempUsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def temp_user_params
-      params.require(:temp_user).permit(:namee, :pin, :expiry_at)
+      params.require(:temp_user).permit(:name, :pin, :expiry_at)
     end
-end
+  end

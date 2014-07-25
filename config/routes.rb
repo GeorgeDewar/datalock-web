@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
+  devise_for :users
   root to: "application#dashboard"
 
-
+  resources :users, only: [:edit, :update, :destroy]
   resources :events
 
   resources :temp_users

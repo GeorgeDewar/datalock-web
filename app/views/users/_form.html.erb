@@ -1,4 +1,4 @@
-<%= form_for(@temp_user) do |f| %>
+<%= form_for(@user) do |f| %>
 
   <div class="field">
     <%= f.label :name %><br>
@@ -7,10 +7,6 @@
   <div class="field">
     <%= f.label :pin %><br>
     <%= f.text_area :pin %>
-  </div>
-  <div class="field">
-    <%= f.label :expiry_at %><br>
-    <%= f.datetime_select :expiry_at %>
   </div>
   <div class="actions">
     <%= f.submit %>
