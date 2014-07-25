@@ -44,3 +44,7 @@ gem 'jquery-turbolinks'
 gem 'puma'
 
 gem 'devise'
+
+gem 'rails-api'
+
+gem "active_model_serializers"

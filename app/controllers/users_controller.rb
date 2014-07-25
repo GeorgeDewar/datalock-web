@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :destroy]
-
+  def new 
+    @user = User.new
+  end
 
   # GET /temp_users/1/edit
   def edit
   end
-
 
   # PATCH/PUT /temp_users/1
   # PATCH/PUT /temp_users/1.json
@@ -41,5 +42,9 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:pin, :name)
+    end
+
+    def user_create_params
+      params.require(:user).permit(:email, :password, :password_confirmation)
     end
   end

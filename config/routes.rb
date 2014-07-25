@@ -1,13 +1,24 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => "registrations" }
   root to: "application#dashboard"
 
-  resources :users, only: [:edit, :update, :destroy]
+  resources :users, except: [:show]
   resources :events
 
   resources :temp_users
 
-  resources :doors
+  resources :doors do 
+    member do 
+      put :lock
+      put :unlock
+    end
+  end
+
+  resources :messages do 
+    collection do 
+      get :poll
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

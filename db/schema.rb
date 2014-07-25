@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140725064047) do
+ActiveRecord::Schema.define(version: 20140725093803) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "commands", force: true do |t|
+    t.text     "code"
+    t.text     "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "doors", force: true do |t|
     t.text     "name"
@@ -25,6 +32,17 @@ ActiveRecord::Schema.define(version: 20140725064047) do
   create_table "events", force: true do |t|
     t.text     "action"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "messages", force: true do |t|
+    t.text     "protocol"
+    t.datetime "confirmed_at"
+    t.text     "success"
+    t.text     "payload"
+    t.datetime "expiry_at"
+    t.integer  "command_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

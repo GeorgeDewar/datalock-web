@@ -31,7 +31,7 @@ class TempUsersController < ApplicationController
         format.html { redirect_to root_path, notice: 'Temp user was successfully created.' }
         format.json { render :show, status: :created, location: @temp_user }
       else
-        flash[:alert] =  @user.errors.full_messages.to_sentence
+        flash[:alert] =  @temp_user.errors.full_messages.to_sentence
         format.html { render :new }
         format.json { render json: @temp_user.errors, status: :unprocessable_entity }
       end
@@ -46,7 +46,7 @@ class TempUsersController < ApplicationController
         format.html { redirect_to root_path, notice: 'Temp user was successfully updated.' }
         format.json { render :show, status: :ok, location: @temp_user }
       else
-        flash[:alert] =  @user.errors.full_messages.to_sentence
+        flash[:alert] =  @temp_user.errors.full_messages.to_sentence
         format.html { render :edit }
         format.json { render json: @temp_user.errors, status: :unprocessable_entity }
       end

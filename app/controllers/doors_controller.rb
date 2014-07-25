@@ -61,6 +61,14 @@ class DoorsController < ApplicationController
     end
   end
 
+  def unlock 
+
+  end
+
+  def lock 
+    
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_door
