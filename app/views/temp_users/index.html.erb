@@ -1,0 +1,29 @@
+<h1>Listing temp_users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Namee</th>
+      <th>Pin</th>
+      <th>Expiry at</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @temp_users.each do |temp_user| %>
+      <tr>
+        <td><%= temp_user.namee %></td>
+        <td><%= temp_user.pin %></td>
+        <td><%= temp_user.expiry_at %></td>
+        <td><%= link_to 'Show', temp_user %></td>
+        <td><%= link_to 'Edit', edit_temp_user_path(temp_user) %></td>
+        <td><%= link_to 'Destroy', temp_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Temp user', new_temp_user_path %>
