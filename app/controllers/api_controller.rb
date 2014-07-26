@@ -52,7 +52,11 @@ class ApiController < ApplicationController
   end
 
   def events
-    render json: Event.all
+    where = []
+    where << "created_at >= '#{params[:from]}'" if params[:from]
+    where << "created_at <= '#{params[:to]}'" if params[:to]
+    where = where.join(' and ')
+    render json: Event.where(where)
   end
 
   def recent_events
