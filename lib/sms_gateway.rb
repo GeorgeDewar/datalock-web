@@ -27,3 +27,5 @@ class SmsGateway
       }
   end
 end
+# sms =   SmsGateway.new("http://smsapi.dalek.co.nz/api/sendSMS")
+# sms.sendSMS("0221673298", "Hi me", "OTA1Mi40MTIwMjM", "MjYyOS4wODUyMDQwOTgzNzM3RGF0YWNvbXAgMjAxNCAtIERvb3")

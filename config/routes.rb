@@ -15,7 +15,6 @@ Rails.application.routes.draw do
 
   resources :doors do 
     member do 
-      put :lock
       put :unlock
     end
   end

@@ -4,6 +4,7 @@ class MessagesController < ApplicationController
     if Message.next_message.present?
       string = Message.next_message.to_package
       if string.present?
+        Message.next_message.update sent: true
         render :text => string
       else
         render :nothing => true, :status => 204 
@@ -17,10 +18,8 @@ class MessagesController < ApplicationController
   begin
     text = request.raw_post
     @message = Message.find text
-    @message.confirmed_at Time.now
-    @message.save
+    @message.update confirmed_at: Time.now
     render :nothing => true, :status => 204 
-
   rescue
     render :nothing => true, :status => 204 
   end

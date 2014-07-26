@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20140725093803) do
   create_table "events", force: true do |t|
     t.text     "action"
     t.integer  "user_id"
+    t.text     "user_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -43,6 +44,8 @@ ActiveRecord::Schema.define(version: 20140725093803) do
     t.text     "payload"
     t.datetime "expiry_at"
     t.integer  "command_id"
+    t.integer  "user_id"
+    t.boolean  "sent",         default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -69,6 +72,7 @@ ActiveRecord::Schema.define(version: 20140725093803) do
     t.text     "name"
     t.boolean  "admin"
     t.text     "pin"
+    t.text     "ph_number"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

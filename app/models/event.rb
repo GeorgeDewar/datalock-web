@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
 
-  def self.door_unlocked
-    
+  def self.door_unlocked(user)
+    Event.create(action: "Door Unlocked", user: user, user_type: user.class.name)
   end
  
   def self.door_unlocked

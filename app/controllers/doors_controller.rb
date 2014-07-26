@@ -62,11 +62,10 @@ class DoorsController < ApplicationController
   end
 
   def unlock 
-
-  end
-
-  def lock 
-    
+    Message.create command: Command.find_by(code: "UNL")
+    respond_to do |format|
+      format.json { head :no_content  }
+    end
   end
 
   private
@@ -79,4 +78,4 @@ class DoorsController < ApplicationController
     def door_params
       params.require(:door).permit(:name)
     end
-end
+  end

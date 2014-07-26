@@ -21,6 +21,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.text     :name
       t.boolean  :admin
       t.text     :pin
+      t.text     :ph_number 
       ## Confirmable
       # t.string   :confirmation_token
       # t.datetime :confirmed_at

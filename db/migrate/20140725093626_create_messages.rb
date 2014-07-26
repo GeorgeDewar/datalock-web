@@ -7,6 +7,8 @@ class CreateMessages < ActiveRecord::Migration
       t.text :payload
       t.timestamp :expiry_at
       t.integer :command_id
+      t.integer :user_id
+      t.boolean :sent, default: false
 
       t.timestamps
     end
