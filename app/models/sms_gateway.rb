@@ -6,7 +6,7 @@ class SMSGateway
   end
   def verifySignature(from, message, application, shortcode, app_secret, signature)
     response = false
-    payload_str = "{from: '" + from + ", message: '" + message + "', application: '" + application + "', shortcode: '"+ shortcode +"'}";
+    payload_str = "{\"from\":\"" + from + "\", \"message\":\"" + message + "\",\"application:\"" + application + "\",\"shortcode\":\""+ shortcode +"\"}";
     check_sig = signString(payload_str, app_secret)
     if(check_sig.eql? signature)
       response = true
