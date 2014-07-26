@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get :remote_unlock
       post :sms_unlock
       get :users
+      get :events
     end
   end
 

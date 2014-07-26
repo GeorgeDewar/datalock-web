@@ -51,5 +51,9 @@ class ApiController < ApplicationController
     render json: User.all
   end
 
+  def events
+    render json: Event.all
+  end
+
 end
 #def verifySignature(from, message, application, shortcode, app_secret, signature)
