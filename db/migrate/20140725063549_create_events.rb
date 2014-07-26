@@ -3,7 +3,7 @@ class CreateEvents < ActiveRecord::Migration
     create_table :events do |t|
       t.text :action
       t.integer :user_id
-      t.text     :user_type
+      t.integer :temp_user_id
 
       t.timestamps
     end

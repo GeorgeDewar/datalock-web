@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-       Message.create(command: Command.find_by(code: "USR"), user: @user, user_type: "user")
+        Message.create(command: Command.find_by(code: "USR"), user: @user)
         format.html { redirect_to root_path, notice: 'Pin successfully updated' }
         format.json { render :show, status: :ok, location: @user }
       else

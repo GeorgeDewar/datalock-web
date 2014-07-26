@@ -62,6 +62,7 @@ class DoorsController < ApplicationController
   end
 
   def unlock 
+    Event.door_unlocked(current_user)
     Message.create command: Command.find_by(code: "UNL")
     respond_to do |format|
       format.json { head :no_content  }

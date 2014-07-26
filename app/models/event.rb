@@ -1,22 +1,28 @@
 class Event < ActiveRecord::Base
+  belongs_to :user
+
 
   def self.door_unlocked(user)
-    Event.create(action: "Door Unlocked", user: user, user_type: user.class.name)
-  end
- 
-  def self.door_unlocked
-
-  end
-
-  def self.door_locked
-
+    if user.class.name == "User"
+      Event.create(action: "Door Unlocked", user: user)
+    else
+      Event.create(action: "Door Unlocked", temp_user: temp_user)
+    end
   end
 
-  def self.pin_changed
-
+  def self.pin_changed(user)
+    if user.class.name == "User"
+      Event.create(action: "Door Unlocked", user: user)
+    else
+      Event.create(action: "Door Unlocked", temp_user: temp_user)
+    end
   end
 
-  def self.motion_detected
-
+  def self.motion_detected(user)
+    if user.class.name == "User"
+      Event.create(action: "Door Unlocked", user: user)
+    else
+      Event.create(action: "Door Unlocked", temp_user: temp_user)
+    end
   end
 end

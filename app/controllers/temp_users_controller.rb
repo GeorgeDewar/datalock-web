@@ -25,7 +25,7 @@ class TempUsersController < ApplicationController
   # POST /temp_users.json
   def create
     @temp_user = TempUser.new(temp_user_params)
-    Message.create(command: Command.find_by(code: "USR"), user: @temp_user, user_type: "temp")
+    Message.create(command: Command.find_by(code: "USR"), temp_user: @temp_user)
     respond_to do |format|
       if @temp_user.save
         format.html { redirect_to root_path, notice: 'Temp user was successfully created.' }
@@ -44,7 +44,7 @@ class TempUsersController < ApplicationController
     respond_to do |format|
       if @temp_user.update(temp_user_params)
         @temp_user.update expiry_at: params[:expiry_at] if params[:expiry_at]
-        Message.create(command: Command.find_by(code: "USR"), user: @temp_user, user_type: "temp")
+        Message.create(command: Command.find_by(code: "USR"), temp_user: @temp_user)
         format.html { redirect_to root_path, notice: 'Temp user was successfully updated.' }
         format.json { render :show, status: :ok, location: @temp_user }
       else
