@@ -36,6 +36,9 @@ GEM
       debug_inspector (>= 0.0.1)
     bootstrap-sass (3.2.0.0)
       sass (~> 3.2)
+    bootstrap3-datetimepicker-rails (3.0.0.2)
+      momentjs-rails (~> 2.5.0)
+    bootstrap_form (2.1.1)
     builder (3.2.2)
     byebug (2.7.0)
       columnize (~> 0.3)
@@ -89,6 +92,8 @@ GEM
     method_source (0.8.2)
     mime-types (1.25.1)
     minitest (5.4.0)
+    momentjs-rails (2.5.1)
+      railties (>= 3.1)
     multi_json (1.10.1)
     orm_adapter (0.5.0)
     pg (0.17.1)
@@ -105,8 +110,6 @@ GEM
     pry-stack_explorer (0.4.9.1)
       binding_of_caller (>= 0.7)
       pry (>= 0.9.11)
-    puma (2.9.0)
-      rack (>= 1.1, < 2.0)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -178,6 +181,8 @@ DEPENDENCIES
   active_model_serializers
   awesome_print
   bootstrap-sass
+  bootstrap3-datetimepicker-rails (~> 3.0.0)
+  bootstrap_form
   coffee-rails (~> 4.0.0)
   coolline
   devise
@@ -187,11 +192,11 @@ DEPENDENCIES
   jquery-turbolinks
   kaminari
   less-rails
+  momentjs-rails (~> 2.5.0)
   pg
   pry-byebug
   pry-rails
   pry-stack_explorer
-  puma
   rails (= 4.1.1)
   rails-api
   sass-rails (~> 4.0.3)

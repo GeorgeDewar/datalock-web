@@ -1,0 +1,47 @@
+.navbar-default .navbar-nav > li > a {
+  color: #ffffff;
+}
+
+.navbar {
+  background-color: darken(#185397, 10%);
+}
+
+.navbar-link {
+  color: #ffffff
+}
+
+.navbar-text {
+  color: #ffffff !important
+}
+
+.navbar-nav > .active > a{
+  background-color: #185397 !important ;
+  color: #ffffff !important ;
+  border-bottom: thin solid #C64521;
+  border-color: #C64521;
+}
+
+.navbar-nav > li > a {
+  color: #ffffff !important;
+}
+
+.navbar-nav > li > a:hover {
+  color: #ffffff !important;
+  background-color: #185397 !important;
+}
+
+body {
+}
+
+.dashboard {
+
+}
+
+.dashboard .column {
+  height:1000px;
+}
+
+
+[data-behaviour="datetimepicker"] {
+  width: 25%;
+}

@@ -1,18 +1,22 @@
 <%= form_for(@temp_user) do |f| %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_area :name %>
-  </div>
-  <div class="field">
-    <%= f.label :pin %><br>
-    <%= f.number_field :pin %>
-  </div>
-  <div class="field">
-    <%= f.label :expiry_at %><br>
-    <%= f.datetime_select :expiry_at %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div class="field">
+  <%= f.label :name %><br>
+  <%= f.text_area :name %>
+</div>
+<div class="field">
+  <%= f.label :pin %><br>
+  <%= f.number_field :pin %>
+</div>
+<div class="field">
+  <%= f.label :expiry_at %><br>
+  <div class='input-group date' data-behaviour='datetimepicker' data-date-format="DD/MM/YYYY hh:mm A" data-date="<%= @temp_user.expiry_at %>">
+    <%= text_field_tag :expiry_at, nil, class: "form-control small",  type: "text" %>
+    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+  </span>
+</div>
+</div>
+<div class="actions">
+  <%= f.submit %>
+</div>
 <% end %>

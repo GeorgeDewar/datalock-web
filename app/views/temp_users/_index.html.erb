@@ -5,7 +5,7 @@
       <th>Name</th>
       <th>Pin</th>
       <th>Expiry at</th>
-      <th colspan="2"></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -14,14 +14,15 @@
       <tr>
         <td><%= temp_user.name %></td>
         <td><%= temp_user.pin %></td>
-        <td><%= temp_user.expiry_at %></td>
-        <td><%= link_to 'Edit', edit_temp_user_path(temp_user) %></td>
-        <td><%= link_to 'Destroy', temp_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if temp_user.expiry_at %>
+        <td><%= temp_user.expired? ? "Expired" : date(temp_user.expiry_at) %></td>
+        <% else %>
+        <td>No Expiry</td>
+        <% end %>
+        <td><%= link_to 'Edit', edit_temp_user_path(temp_user), class: "btn btn-primary btn-xs"  %>
+        <%= link_to 'Destroy', temp_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Temp user', new_temp_user_path %>

@@ -3,5 +3,7 @@ class TempUser < ActiveRecord::Base
   validates_numericality_of :pin, :message => "must only be numbers"
   validates_presence_of :pin
 
-
+  def expired?
+    Time.now > expiry_at
+  end
 end

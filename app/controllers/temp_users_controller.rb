@@ -43,6 +43,7 @@ class TempUsersController < ApplicationController
   def update
     respond_to do |format|
       if @temp_user.update(temp_user_params)
+        @temp_user.update expiry_at: params[:expiry_at] if params[:expiry_at]
         format.html { redirect_to root_path, notice: 'Temp user was successfully updated.' }
         format.json { render :show, status: :ok, location: @temp_user }
       else

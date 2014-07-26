@@ -41,7 +41,9 @@ gem 'kaminari'
 
 gem 'jquery-turbolinks'
 
-gem 'puma'
+gem 'bootstrap_form'
+gem 'bootstrap3-datetimepicker-rails', '~> 3.0.0'
+gem 'momentjs-rails', '~> 2.5.0'
 
 gem 'devise'
 

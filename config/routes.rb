@@ -2,6 +2,12 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :registrations => "registrations" }
   root to: "application#dashboard"
 
+  resources :api do 
+    collection do 
+      post :remote_unlock
+    end
+  end
+
   resources :users, except: [:show]
   resources :events
 
@@ -17,6 +23,7 @@ Rails.application.routes.draw do
   resources :messages do 
     collection do 
       get :poll
+      post :confirm
     end
   end
 
