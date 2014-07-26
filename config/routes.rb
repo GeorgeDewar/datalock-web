@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     collection do 
       get :remote_unlock
       post :sms_unlock
+      get :users
     end
   end
 

@@ -47,5 +47,9 @@ class ApiController < ApplicationController
     # MjYyOS4wODUyMDQwOTgzNzM3RGF0YWNvbXAgMjAxNCAtIERvb3
   # end
 
+  def users
+    render json: User.all
+  end
+
 end
 #def verifySignature(from, message, application, shortcode, app_secret, signature)
