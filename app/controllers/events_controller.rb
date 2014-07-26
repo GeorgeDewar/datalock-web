@@ -37,7 +37,8 @@ class EventsController < ApplicationController
       end
     end
   end
-
+  #0278315450
+  #def sendSMS(to, message, app_key, app_secret)
   def log
     text = request.raw_post
     code = text[0..3]
@@ -47,8 +48,12 @@ class EventsController < ApplicationController
       event = Event.new(action: "Entry by PIN", user: User.where(pin: pin).first)
     elsif result == '0'
       event = Event.new(action: "Failed PIN attempt")
+      sms = SmsGateway.new("http://smsapi.dalek.co.nz/api/sendSMS")
+      sms.sendSMS("+64278315450", "There was a failed PIN attempt for the door", "OTA1Mi40MTIwMjM", "MjYyOS4wODUyMDQwOTgzNzM3RGF0YWNvbXAgMjAxNCAtIERvb3")
     elsif result == '!'
       event = Event.new(action: "PIN Lockout")
+      sms = SmsGateway.new("http://smsapi.dalek.co.nz/api/sendSMS")
+      sms.sendSMS("+64278315450", "Due to repeated attempts of an incorrect PIN, the door is now in PIN Lockout mode", "OTA1Mi40MTIwMjM", "MjYyOS4wODUyMDQwOTgzNzM3RGF0YWNvbXAgMjAxNCAtIERvb3")
     else
       raise 'Unrecognized result flag ' + result
     end
