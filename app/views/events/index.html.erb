@@ -10,16 +10,20 @@
 
   <tbody>
     <% @events.each do |event| %>
-      <tr>
-        <td><%= event.action %></td>
-        <% if event.user.present? %>
-          <td><%= event.user.name %></td>
-          <td><%= event.user.email %></td>
-        <% elsif %>
-          <td><%= event.temp_user.name %></td>
-          <td><%= event.temp_user.email %></td>
-        <% end %>
-      </tr>
+    <tr>
+      <td><%= event.action %></td>
+      <% if event.user.present? %>
+      <td><%= event.user.name %></td>
+      <td><%= event.user.email %></td>
+      <% elsif event.temp_user.present?%>
+      <td><%= event.temp_user.name %></td>
+      <td></td>
+      <% else %>
+      <td></td>
+      <td></td>
+      <% end %>
+    </tr>
     <% end %>
   </tbody>
 </table>
+<%= paginate @events %>

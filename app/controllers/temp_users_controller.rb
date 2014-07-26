@@ -43,6 +43,7 @@ class TempUsersController < ApplicationController
   def update
     respond_to do |format|
       if @temp_user.update(temp_user_params)
+         Event.pin_changed(nil,@temp_user)
         @temp_user.update expiry_at: params[:expiry_at] if params[:expiry_at]
         Message.create(command: Command.find_by(code: "USR"), temp_user: @temp_user)
         format.html { redirect_to root_path, notice: 'Temp user was successfully updated.' }

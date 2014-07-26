@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :api do 
     collection do 
       get :remote_unlock
+      post :sms_unlock
     end
   end
 
@@ -23,6 +24,7 @@ Rails.application.routes.draw do
     collection do 
       get :poll
       post :confirm
+      post :log_event
     end
   end
 

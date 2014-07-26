@@ -29,7 +29,7 @@
       <%= render "doors/show", door: Door.first %>
       <br>
       <div align="center">
-      <%= link_to "#{image_tag 'red_lock.jpg', size: '200x250', alt: 'Lock', id: "lock_image"}".html_safe, unlock_door_path(Door.first), method: :put,remote: true %>
+      <%= link_to "#{image_tag 'default_lock.jpg', size: '200x250', alt: 'Lock', id: "lock_image"}".html_safe, unlock_door_path(Door.first), method: :put,remote: true %>
       </div>
     </div>
   </div>

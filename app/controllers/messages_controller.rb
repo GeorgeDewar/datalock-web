@@ -10,20 +10,24 @@ class MessagesController < ApplicationController
         render :nothing => true, :status => 204 
       end
     else
-     render :nothing => true, :status => 204 
-   end
- end
-
- def confirm
-  begin
-    text = request.raw_post
-    @message = Message.find text
-    @message.update confirmed_at: Time.now
-    render :nothing => true, :status => 204 
-  rescue
-    render :nothing => true, :status => 204 
+      render :nothing => true, :status => 204 
+    end
   end
-end
+
+  def confirm
+    begin
+      text = request.raw_post
+      @message = Message.find text
+      @message.update confirmed_at: Time.now
+      render :nothing => true, :status => 204 
+    rescue
+      render :nothing => true, :status => 204 
+    end
+  end
+
+  def log_event
+    
+  end
 
 
 end

@@ -15,6 +15,6 @@ $(document).ready ->
   $('#lock_image').click (e) -> 
     $(this).attr("src", "assets/green_lock.jpg")
     setTimeout ->
-      $('#lock_image').attr("src", "assets/red_lock.jpg")
+      $('#lock_image').attr("src", "assets/default_lock.jpg")
     , 1000
     e.preventDefault()
