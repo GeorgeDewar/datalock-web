@@ -18,8 +18,36 @@ class ApiController < ApplicationController
 
 
   def sms_unlock 
-    return render :nothing => true
+    sms = SmsGateway.new("http://smsapi.dalek.co.nz/api/sendSMS")
+    sender = params[:sender]
+    message = params[:message]
+    application = params[:application]
+    shortcode = params[:shortcode]
+    signature = params[:signature]
+    if sms.verifySignature(sender, message, application, shortcode, "MjYyOS4wODUyMDQwOTgzNzM3RGF0YWNvbXAgMjAxNCAtIERvb3", signature)
+      if User.exists?(:ph_number => sender)
+        Message.create payload: "Unlock from SMS", command: Command.find_by(name: "Unlock")
+        payload = {
+          message: "Successfully unlocked",
+          status: 200
+        }
+        return render :json => payload
+      else
+        payload = {
+          message: "User is unrecognised",
+          status: 403
+        }
+        return render :json => payload
+      end
+    else
+      payload = {
+        message: "Signature verification failed",
+        status: 400
+      }
+      return render :json => payload
+    end
     # MjYyOS4wODUyMDQwOTgzNzM3RGF0YWNvbXAgMjAxNCAtIERvb3
   end
 
 end
+#def verifySignature(from, message, application, shortcode, app_secret, signature)
