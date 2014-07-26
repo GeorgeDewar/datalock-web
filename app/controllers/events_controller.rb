@@ -48,8 +48,6 @@ class EventsController < ApplicationController
       event = Event.new(action: "Entry by PIN", user: User.where(pin: pin).first)
     elsif result == '0'
       event = Event.new(action: "Failed PIN attempt")
-      sms = SmsGateway.new("http://smsapi.dalek.co.nz/api/sendSMS")
-      sms.sendSMS("+64278315450", "There was a failed PIN attempt for the door", "OTA1Mi40MTIwMjM", "MjYyOS4wODUyMDQwOTgzNzM3RGF0YWNvbXAgMjAxNCAtIERvb3")
     elsif result == '!'
       event = Event.new(action: "PIN Lockout")
       sms = SmsGateway.new("http://smsapi.dalek.co.nz/api/sendSMS")

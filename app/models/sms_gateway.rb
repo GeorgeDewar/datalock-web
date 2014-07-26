@@ -22,8 +22,6 @@ class SmsGateway
     puts payload_str
     puts signature
     response = Unirest.get @smsapi_host,
-      parameters: {:to => to, :message => message, :app_key => app_key, :signature => signature} {|response|
-        puts response.code
-      }
+      parameters: {:to => to, :message => message, :app_key => app_key, :signature => signature}
   end
 end
