@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, :log
 
   # GET /events
   # GET /events.json
@@ -35,6 +36,24 @@ class EventsController < ApplicationController
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def log
+    text = request.raw_post
+    code = text[0..3]
+    result = text[3]
+    pin = text[4..7]
+    if result == '1'
+      event = Event.new(action: "Entry by PIN", user: User.where(pin: pin).first)
+    elsif result == '0'
+      event = Event.new(action: "Failed PIN attempt")
+    elsif result == '!'
+      event = Event.new(action: "PIN Lockout")
+    else
+      raise 'Unrecognized result flag ' + result
+    end
+    event.save
+    render :nothing => true, :status => 204 
   end
 
   # PATCH/PUT /events/1

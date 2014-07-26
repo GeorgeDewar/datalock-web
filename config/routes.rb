@@ -10,7 +10,11 @@ Rails.application.routes.draw do
   end
 
   resources :users, except: [:show]
-  resources :events
+  resources :events do
+    collection do
+      post :log
+    end
+  end
 
   resources :temp_users
 
@@ -24,7 +28,6 @@ Rails.application.routes.draw do
     collection do 
       get :poll
       post :confirm
-      post :log_event
     end
   end
 
