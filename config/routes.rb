@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :api do 
     collection do 
-      post :remote_unlock
+      get :remote_unlock
     end
   end
 

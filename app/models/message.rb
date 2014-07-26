@@ -1,7 +1,9 @@
 class Message < ActiveRecord::Base
   belongs_to :command
 
-  scope :next_message, -> { where(confirmed_at: nil).order(:created_at).first }
+  def self.next_message
+    Message.where(confirmed_at: nil).order(:created_at).first
+  end
 
   def to_package user=nil
     msg = ""
@@ -15,6 +17,11 @@ class Message < ActiveRecord::Base
       msg = remove_user(user)
     end
     msg.gsub(/\s+/, "") # clean up any white space added by indentation
+  end
+
+  def confirm!
+    self.confirmed_at = Time.now
+    self.save
   end
 
   private 
@@ -36,7 +43,7 @@ class Message < ActiveRecord::Base
     "
     #{(id%100).to_s.rjust(2, '0')}
     #{Command.find_by(name: "Add/Edit User").code}
-    #{(user.id%100).to_s.rjust(2, '0')}##{truncate(user.name)}##{user.pin}
+    #{(user.id%100).to_s.rjust(2, '0')}#{truncate(user.name)}##{user.pin}
     "
   end  
 
