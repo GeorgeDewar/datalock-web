@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       post :sms_unlock
       get :users
       get :events
+      get :recent_events
     end
   end
 

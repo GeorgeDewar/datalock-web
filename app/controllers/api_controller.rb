@@ -55,5 +55,10 @@ class ApiController < ApplicationController
     render json: Event.all
   end
 
+  def recent_events
+    limit = params[:limit] || 10
+    render json: Event.limit(limit).order(created_at: :desc)
+  end
+
 end
 #def verifySignature(from, message, application, shortcode, app_secret, signature)
