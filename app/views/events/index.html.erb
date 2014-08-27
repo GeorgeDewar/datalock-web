@@ -5,25 +5,25 @@
       <th>Action</th>
       <th>User Name</th>
       <th>User Email</th>
+      <th>Time</th>
     </tr>
   </thead>
-
   <tbody>
     <% @events.each do |event| %>
-    <tr>
-      <td><%= event.action %></td>
-      <% if event.user.present? %>
-      <td><%= event.user.name %></td>
-      <td><%= event.user.email %></td>
-      <% elsif event.temp_user.present?%>
-      <td><%= event.temp_user.name %></td>
-      <td></td>
-      <% else %>
-      <td></td>
-      <td></td>
-      <% end %>
-    </tr>
+      <tr>
+        <td><%= event.action %></td>
+        <% if event.user.present? %>
+          <td><%= event.user.name %></td>
+          <td><%= event.user.email %></td>
+        <% elsif event.temp_user.present?%>
+          <td><%= event.temp_user.name %></td>
+          <td></td>
+        <% else %>
+          <td></td>
+          <td></td>
+        <% end %>
+        <td><%= event.created_at.strftime("%m/%d/%Y at %I:%M%p") %></td>
+      </tr>
     <% end %>
   </tbody>
 </table>
-<%= paginate @events %>
