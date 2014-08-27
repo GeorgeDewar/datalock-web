@@ -19,7 +19,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string   :current_sign_in_ip
       t.string   :last_sign_in_ip
       t.text     :name
-      t.boolean  :admin
+      t.boolean  :admin, default: false, null: false
       t.text     :pin
       t.text     :ph_number 
       ## Confirmable
